@@ -1,14 +1,14 @@
-import Bank.Account;
+import Bank.CheckingAccount;
+import Bank.Account.*;
 
 public class Main {
     
     public static void main(String[] args) throws Exception {
-        Account usuario1 = new Account("Roq", 22);
+        CheckingAccount user1 = new CheckingAccount("Roq", 22, true, false);
 
-        usuario1.depositAmount(200);
-        usuario1.withdraw(-2);
+        user1.depositAmount(200);
 
-        System.out.println();
+        System.out.println(user1);
     }
-
+    
 }
