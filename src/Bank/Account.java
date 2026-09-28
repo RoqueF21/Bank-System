@@ -1,8 +1,11 @@
 package Bank;
 
+import Manage.Manage;
 import java.util.Random;
 
 public class Account {
+    
+    Manage manage = new Manage();
 
     Random random = new Random();
 
@@ -17,15 +20,6 @@ public class Account {
     public Account(String name, int age, boolean ischecking, boolean issavings){
         this.name = name;
         this.age = age;
-        
-        if(ischecking){
-            this.balanceChecking = 0;
-        }
-
-        if(issavings){
-            this.balanceSavings = 0;
-        }
-
         this.id = randomId();
         this.isChecking = ischecking;
         this.isSavings = issavings;
