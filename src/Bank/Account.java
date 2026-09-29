@@ -11,36 +11,30 @@ public class Account {
 
     private String name;
     private int age;
-    private double balanceChecking;
-    private double balanceSavings;
+    private double balance;
     private int id;
-    private boolean isChecking;
-    private boolean isSavings;
 
-    public Account(String name, int age, boolean ischecking, boolean issavings){
+    public Account(String name, int age){
         this.name = name;
         this.age = age;
         this.id = randomId();
-        this.isChecking = ischecking;
-        this.isSavings = issavings;
     }
 
-    //Precida aprimorar para sacar em ambos tipo de contas
-    public void withdraw(double value){
-        if(value > 0 && value <= this.balanceChecking){
-            this.balanceChecking -= value;
+    public void withdraw(double amount){
+        if(amount > 0 && amount <= this.balance){
+            this.balance -= amount;
 
-            System.out.println("Valor do saque: " + value + " Saldo atual: " + this.balanceChecking);
+            System.out.println("Valor do saque: " + amount + " Saldo atual: " + this.balance);
         }
         else{
             System.out.println("Você não tem saldo suficiente no momento");
         }
     }
 
-    //Precida aprimorar para depositar em ambos tipo de contas
-    public void depositAmount(double value){
-        if(value > 0){
-            this.balanceChecking += value;
+    public void depositAmount(double amount){
+
+        if(amount > 0){
+            this.balance = amount;
         }
     }
 
@@ -50,15 +44,15 @@ public class Account {
         return randomIdNum;
     }
 
+    protected void setSavingsIncrease(double value){
+        this.balance += value;
+    }
+
     @Override
     public String toString(){
         return "Nome: " + this.name + "\n" +
                "Idade: " + this.age + "\n" +
-               "Saldo Corrente: " + this.balanceChecking + "\n" +
-               "Saldo Poupança: " + this.balanceSavings + "\n" +
-               "ID da conta: " + this.id + "\n" +
-               "Corrente: " + isChecking + "\n" +
-               "Poupança: " + isSavings;
+               "ID da conta: " + this.id + "\n";
     }
 
     public String getName(){
@@ -69,23 +63,11 @@ public class Account {
         return this.age;
     }
 
-    public double getBalanceChecking(){
-        return this.balanceChecking;
-    }
-
-    public double getBalanceSavings(){
-        return this.balanceSavings;
+    public double getBalance(){
+        return this.balance;
     }
 
     public int getId(){
         return this.id;
-    }
-
-    public boolean getIsChecking(){
-        return this.isChecking;
-    }
-
-    public boolean getIsSavings(){
-        return this.isSavings;
     }
 }
